@@ -42,12 +42,13 @@ class SettingsReference:
     ADU_FACTOR = 3.0 * nu.ADU
 
 
-    BASEDIR = os.path.abspath(os.path.join(os.path.dirname(__file__), "../../"))
-    REFFILES = os.path.abspath(os.path.join(BASEDIR, "assets/reffiles"))
-    STARPARAMFILES = os.path.abspath(os.path.join(BASEDIR, "assets/star_params"))
-    REFFITSFILE = os.path.abspath(
-        os.path.join(REFFILES, "refthar/NEO_20220903_191404_th0.fits")
-    )
+    USER_BASEDIR = os.path.abspath(os.path.join(os.path.dirname(__file__), "../"))
+    # uncomment if necessary
+    # REFFILES = os.path.abspath(os.path.join(BASEDIR, "reffiles"))
+    STARPARAMFILES = os.path.abspath(os.path.join(USER_BASEDIR, "star_params"))
+#    REFFITSFILE = os.path.abspath(
+#        os.path.join(REFFILES, "refthar/NEO_20220903_191404_th0.fits")
+#    )
     
     # --------------------------------------------
     #    identifier for absolute sequence number and filenumber in sequence (1-4)
@@ -151,7 +152,7 @@ class SettingsReference:
     # ----------------------------------------
     #    wave resolution for Extractor_level_1
     # ---------------------------------------
-    LAMBDAFILE = os.path.join(REFFILES, "NEXTRA_base_lambda_map.txt")
+    # LAMBDAFILE = os.path.join(REFFILES, "NEXTRA_base_lambda_map.txt")
 
     ESTIMATE_BACKGROUND = "BACKGROUND_1D"
 
@@ -159,7 +160,7 @@ class SettingsReference:
     # __STORE__
     # -------------------------------
 
-    STORE_PATH = os.path.join(BASEDIR, "assets/__STORE__")
+    STORE_PATH = os.path.join(USER_BASEDIR, "__STORE__")
 
     # snippets extraction
     # REF_SPECTRUM = os.path.join(REFFILES, 'thar_spec_MM201006.dat')
@@ -167,18 +168,19 @@ class SettingsReference:
     # ----------------------------------------
     #  atlas lines available
     # -------------------------------------------
-    REF_ATLASLINES_REEDMAN = os.path.join(REFFILES, "Redman_table6.dat")
-    REF_ATLASLINES_UVES = os.path.join(REFFILES, "thar_UVES_MM090311.dat")
-    REF_ATLASLINES_CLICKED = os.path.join(REFFILES, "thar_clicked_uves.csv")
+    #REF_ATLASLINES_REEDMAN = os.path.join(REFFILES, "Redman_table6.dat")
+    #REF_ATLASLINES_UVES = os.path.join(REFFILES, "thar_UVES_MM090311.dat")
+    #REF_ATLASLINES_CLICKED = os.path.join(REFFILES, "thar_clicked_uves.csv")
 
     # choice of catalog to use
     # TODO: use enum type
-    ATLAS_FOR_SNIPPETS = (
-        "CLICKED"  #'CLICKED'   # choose from 'UVES', 'REEDMAN', 'CLICKED'
-    )
+
+    #ATLAS_FOR_SNIPPETS = (
+    #    "CLICKED"  #'CLICKED'   # choose from 'UVES', 'REEDMAN', 'CLICKED'
+    #)
 
     # zones not used (beware of Argon lines)
-    EXCLUSION = os.path.join(REFFILES, "excluded.dat")
+    # EXCLUSION = os.path.join(REFFILES, "excluded.dat") TODO: check if out
 
     WAVEMAP_IN_VACUUM_AIR = "AIR"   #"VACUUM"  # "VACUUM" # 'VACUUM' # or AIR
 
@@ -265,9 +267,12 @@ class SettingsReference:
 
 
 def get_kwargs():
-    return {
+    from nextra import settings_reference
+    tmp = settings_reference.get_kwargs()
+    tmp.update({
         k: v for k, v in SettingsReference.__dict__.items() if not k.startswith("_")
-    }
+    })
+    return tmp
 
 
 ## the following parameters are included into the fits files header
