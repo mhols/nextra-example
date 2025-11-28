@@ -3,6 +3,7 @@ import numpy as np
 from dotenv import load_dotenv
 
 import nextra.units as nu
+import nextra.continuum as continuum
 
 __doc__ = """ Global parameters for the datareduction pipeline.
 This specific module is adapted for the NEO Narval instrument.
@@ -193,10 +194,18 @@ class SettingsReference:
 
     #------- CONTINUUM PARAMS
 
-    CONTINUUM_METHOD = "CONTINUUM_CLICKED" #classical spline or "CLASSICAL SPLINE"
-    CONTINUUM_POINTS = os.path.join(STARPARAMFILES, "vega/vega_continuum.pickl")
-    CONTINUUM_HALFVEL = 15 * nu.KM / nu.S
+    CONTINUUM_METHOD_CLASS = continuum.QQQContinuum
 
+    CONTINUUM_METHOD_EXTRA_KWARGS = dict (
+            CONTINUUM_POINTS = os.path.join(STARPARAMFILES, "vega/vega_continuum.pickl"),
+            CONTINUUM_HALFVEL = 15 * nu.KM / nu.S
+        )
+
+
+    ### the following settings should be removed....
+    CONTINUUM_HALFVEL = 15 * nu.KM / nu.S
+    CONTINUUM_METHOD = "CONTINUUM_CLICKED" 
+    CONTINUUM_POINTS = os.path.join(STARPARAMFILES, 'vega/vega_continuum.pickl')
     CONTINUUM_METHOD_ORDER = {
         o : n
         for o, n in [
