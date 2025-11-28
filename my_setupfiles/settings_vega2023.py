@@ -194,15 +194,20 @@ class SettingsReference:
 
     #------- CONTINUUM PARAMS
 
-    CONTINUUM_METHOD_CLASS = continuum.QQQContinuum
+    #CONTINUUM_METHOD_CLASS = continuum.QQQContinuum        ### set this if you want to use the same continuum estimator for all orders
+    CONTINUUM_METHOD_CLASS = continuum.PointBasedContinuum  ### set this if you want to use the same continuum estimator for all orders
 
+    ### add here any extra paramters your continuum method may need
     CONTINUUM_METHOD_EXTRA_KWARGS = dict (
-            CONTINUUM_POINTS = os.path.join(STARPARAMFILES, "vega/vega_continuum.pickl"),
+            CONTINUUM_POINTS_FILE = os.path.join(STARPARAMFILES, "vega/vega_continuum.pickl"),
             CONTINUUM_HALFVEL = 15 * nu.KM / nu.S
         )
+    
+
 
 
     ### the following settings should be removed....
+    """
     CONTINUUM_HALFVEL = 15 * nu.KM / nu.S
     CONTINUUM_METHOD = "CONTINUUM_CLICKED" 
     CONTINUUM_POINTS = os.path.join(STARPARAMFILES, 'vega/vega_continuum.pickl')
@@ -249,6 +254,7 @@ class SettingsReference:
             #[61, 'P'],
         ]
     }
+    """
 
 
 
