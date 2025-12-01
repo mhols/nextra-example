@@ -3,6 +3,7 @@ import numpy as np
 from dotenv import load_dotenv
 
 import nextra.units as nu
+import nextra.continuum as continuum
 
 __doc__ = """ Global parameters for the datareduction pipeline.
 This specific module is adapted for the NEO Narval instrument.
@@ -38,17 +39,18 @@ class SettingsReference:
     OBS_LONG = 0.1333 * nu.DEG
     OBS_LAT = 42.9333 * nu.DEG
     OBS_ALT = 2869.4 * nu.M
-
+    
     ADU_FACTOR = 3.0 * nu.ADU
 
 
-    BASEDIR = os.path.abspath(os.path.join(os.path.dirname(__file__), "../../"))
-    REFFILES = os.path.abspath(os.path.join(BASEDIR, "assets/reffiles"))
-    STARPARAMFILES = os.path.abspath(os.path.join(BASEDIR, "assets/star_params"))
-    REFFITSFILE = os.path.abspath(
-        os.path.join(REFFILES, "refthar/NEO_20220903_191404_th0.fits")
-    )
-
+    USER_BASEDIR = os.path.abspath(os.path.join(os.path.dirname(__file__), "../"))
+    # uncomment if necessary
+    # REFFILES = os.path.abspath(os.path.join(BASEDIR, "reffiles"))
+    STARPARAMFILES = os.path.abspath(os.path.join(USER_BASEDIR, "star_params"))
+#    REFFITSFILE = os.path.abspath(
+#        os.path.join(REFFILES, "refthar/NEO_20220903_191404_th0.fits")
+#    )
+    
     # --------------------------------------------
     #    identifier for absolute sequence number and filenumber in sequence (1-4)
     # --------------------------------------------
@@ -85,7 +87,7 @@ class SettingsReference:
     VOIE1WIDTH = 13  # right of separator
     VOIE2WIDTH = 13  # left (redwards) of separator
     VOIE3WIDTH = 13
-    FLUX_LIMIT = 200 * ADU_FACTOR  # below, the beam extraction is discarded
+    FLUX_LIMIT = 200  * ADU_FACTOR # below, the beam extraction is discarded
 
     SHIFT_MASK_VOIE1 = list(range(2, VOIE1WIDTH + 1)) #voie1 from 2 : VOIEWIDTH1
     SHIFT_MASK_VOIE2 = list(range(-VOIE2WIDTH -1, -1) #voie2 from -VOIE2WIDTH-1 : -2
@@ -102,9 +104,8 @@ class SettingsReference:
     USE_PICKED_CENTRAL_POSITIONS = (
         False # if True use CENTRALPOSITIONS othterwise try matching
     )
-
     CENTRALPOSITIONSHIFT = 25  #shift of reference CENTRALPOSITION to observed CENTRALPOSITION
-
+    
     _CENTRALPOSITION = {
         21: 824,
         22: 866,
@@ -144,9 +145,8 @@ class SettingsReference:
         56: 2984,
         57: 3086,
     }
-
+    
     CENTRALPOSITION={o:n+25 for o,n in _CENTRALPOSITION.items()}
-
     # 58:3192,} TODO make snipets not to break ...
     # 59:3302}  TODO make robust for empty beams
 
@@ -155,7 +155,7 @@ class SettingsReference:
     # ----------------------------------------
     #    wave resolution for Extractor_level_1
     # ---------------------------------------
-    LAMBDAFILE = os.path.join(REFFILES, "NEXTRA_base_lambda_map.txt")
+    # LAMBDAFILE = os.path.join(REFFILES, "NEXTRA_base_lambda_map.txt")
 
     ESTIMATE_BACKGROUND = "BACKGROUND_1D"
 
@@ -163,7 +163,7 @@ class SettingsReference:
     # __STORE__
     # -------------------------------
 
-    STORE_PATH = os.path.join(BASEDIR, "assets/__STORE__")
+    STORE_PATH = os.path.join(USER_BASEDIR, "__STORE__")
 
     # snippets extraction
     # REF_SPECTRUM = os.path.join(REFFILES, 'thar_spec_MM201006.dat')
@@ -171,18 +171,19 @@ class SettingsReference:
     # ----------------------------------------
     #  atlas lines available
     # -------------------------------------------
-    REF_ATLASLINES_REEDMAN = os.path.join(REFFILES, "Redman_table6.dat")
-    REF_ATLASLINES_UVES = os.path.join(REFFILES, "thar_UVES_MM090311.dat")
-    REF_ATLASLINES_CLICKED = os.path.join(REFFILES, "thar_clicked_uves.csv")
+    #REF_ATLASLINES_REEDMAN = os.path.join(REFFILES, "Redman_table6.dat")
+    #REF_ATLASLINES_UVES = os.path.join(REFFILES, "thar_UVES_MM090311.dat")
+    #REF_ATLASLINES_CLICKED = os.path.join(REFFILES, "thar_clicked_uves.csv")
 
     # choice of catalog to use
     # TODO: use enum type
-    ATLAS_FOR_SNIPPETS = (
-        "CLICKED"  #'CLICKED'   # choose from 'UVES', 'REEDMAN', 'CLICKED'
-    )
+
+    #ATLAS_FOR_SNIPPETS = (
+    #    "CLICKED"  #'CLICKED'   # choose from 'UVES', 'REEDMAN', 'CLICKED'
+    #)
 
     # zones not used (beware of Argon lines)
-    EXCLUSION = os.path.join(REFFILES, "excluded.dat")
+    # EXCLUSION = os.path.join(REFFILES, "excluded.dat") TODO: check if out
 
     WAVEMAP_IN_VACUUM_AIR = "AIR"   #"VACUUM"  # "VACUUM" # 'VACUUM' # or AIR
 
@@ -193,16 +194,27 @@ class SettingsReference:
     SNIPPETS_PIXEL_DELTA = (
         2 * nu.PIXEL
     )  # pixel interval around pixel mean for matching catalog
-    VOIE_METHOD = "OPTIMAL_EXTRACT" ##SUM_DIVIDE_CENTRALROW" ##OPTIMAL_EXTRACT"  # defines flux_123 in .fits
+    VOIE_METHOD = "OPTIMAL_EXTRACT"##SUM_DIVIDE_CENTRALROW" ##OPTIMAL_EXTRACT"  # defines flux_123 in .fits
 
     #------- CONTINUUM PARAMS
 
-    CONTINUUM_METHOD = "CONTINUUM_CLICKED" #classical spline or "CLASSICAL SPLINE"
-    CONTINUUM_POINTS = os.path.join(STARPARAMFILES, "altair/altair_continuum.pickl")
-    CONTINUUM_HALFVEL = 15 * nu.KM / nu.S
+    #CONTINUUM_METHOD_CLASS = continuum.QQQContinuum        ### set this if you want to use the same continuum estimator for all orders
+    CONTINUUM_METHOD_CLASS = continuum.PointBasedContinuum  ### set this if you want to use the same continuum estimator for all orders
 
-    # CONTINUUM_CLICKED, QQQ = qqq, POLYNOMIAL = 2nd order poly
+    ### add here any extra paramters your continuum method may need
+    CONTINUUM_METHOD_EXTRA_KWARGS = dict (
+            CONTINUUM_POINTS_FILE = os.path.join(STARPARAMFILES, "altair_2020/altair_continuum.pickl"),
+            CONTINUUM_HALFVEL = 15 * nu.KM / nu.S
+        )
     
+
+
+
+    ### the following settings should be removed....
+    """
+    CONTINUUM_HALFVEL = 15 * nu.KM / nu.S
+    CONTINUUM_METHOD = "CONTINUUM_CLICKED" 
+    CONTINUUM_POINTS = os.path.join(STARPARAMFILES, 'vega/vega_continuum.pickl')
     CONTINUUM_METHOD_ORDER = {
         o : n
         for o, n in [
@@ -247,54 +259,6 @@ class SettingsReference:
         ]
     }
     """
-    CONTINUUM_METHOD_ORDER = {
-        o : n
-        for o, n in [
-            [21, 'QQQ'],
-            [22, 'QQQ'],
-            [23, 'QQQ'],
-            [24, 'QQQ'],
-            [25, 'QQQ'],
-            [26, 'QQQ'],
-            [27, 'QQQ'],
-            [28, 'QQQ'],
-            [29, 'QQQ'],
-            [30, 'QQQ'],
-            [31, 'QQQ'],
-            [32, 'QQQ'],
-            [33, 'QQQ'],
-            [34, 'QQQ'],
-            [35, 'QQQ'],
-            [36, 'QQQ'],
-            [37, 'QQQ'],
-            [38, 'QQQ'],
-            [39, 'QQQ'],
-            [40, 'QQQ'],
-            [41, 'QQQ'],
-            [42, 'QQQ'],
-            [43, 'QQQ'],
-            [44, 'QQQ'],
-            [45, 'QQQ'],
-            [46, 'QQQ'],
-            [47, 'QQQ'],
-            [48, 'QQQ'],
-            [49, 'QQQ'],
-            [50, 'QQQ'],
-            [51, 'QQQ'],
-            [52, 'QQQ'],
-            [53, 'QQQ'],
-            [54, 'QQQ'],
-            [55, 'QQQ'],
-            [56, 'QQQ'],
-            [57, 'QQQ'],
-            #[58, 'POLYNOMIAL'],
-            #[59, 'POLYNOMIAL'],
-            #[60, 'POLYNOMIAL'],
-            #[61, 'P'],
-        ]
-    }
-    """
-
 
 
 
@@ -307,7 +271,7 @@ class SettingsReference:
     CLIP_QUANTITY = "deltavr"
     CLIPTHRESHOLD = 2000 * nu.M / nu.S
     CLIP_MAX_VRAD = 2000 * nu.M / nu.S
-    N_SIGMA_CLIPP = 10 # maximal number of clipping iterations per update
+    N_SIGMA_CLIPP = 10 # maximal number of clipping iterations per update 
 
     FITWEIGHT = "flux"  # weighted empirical risk
     USE_SIGMA_MIN = "True"  # do not use a minimal sigma in fitting
@@ -322,9 +286,12 @@ class SettingsReference:
 
 
 def get_kwargs():
-    return {
+    from nextra import settings_reference
+    tmp = settings_reference.get_kwargs()
+    tmp.update({
         k: v for k, v in SettingsReference.__dict__.items() if not k.startswith("_")
-    }
+    })
+    return tmp
 
 
 ## the following parameters are included into the fits files header
