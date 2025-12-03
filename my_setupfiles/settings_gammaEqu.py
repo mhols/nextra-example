@@ -192,7 +192,7 @@ class SettingsReference:
     #------- CONTINUUM PARAMS
 
     CONTINUUM_METHOD = "qqq" #classical spline or "CLASSICAL SPLINE"
-    CONTINUUM_POINTS = os.path.join(STARPARAMFILES, "vega/vega_continuum.pickl")
+    CONTINUUM_POINTS = os.path.join(STARPARAMFILES, "vega/vega_neonarval_continuum.pickl")
     CONTINUUM_HALFVEL = 15 * nu.KM / nu.S
 
 

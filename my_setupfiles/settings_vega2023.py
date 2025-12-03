@@ -199,7 +199,7 @@ class SettingsReference:
 
     ### add here any extra paramters your continuum method may need
     CONTINUUM_METHOD_EXTRA_KWARGS = dict (
-            CONTINUUM_POINTS_FILE = os.path.join(STARPARAMFILES, "vega/vega_continuum.pickl"),
+            CONTINUUM_POINTS_FILE = os.path.join(STARPARAMFILES, "vega/vega_neonarval_continuum.pickl"),
             CONTINUUM_HALFVEL = 15 * nu.KM / nu.S
         )
     
