@@ -108,6 +108,8 @@ class SettingsReference:
         False # if True use CENTRALPOSITIONS othterwise try matching
     )
 
+    LAMBDA_UNIT_OF_INPUT_FITSFILES=nu.ANGSTROM 
+    LAMBDA_UNIT_OF_OUTPUT=nu.NM              # nanometer 
 
     CENTRALPOSITION = {
         o : n
