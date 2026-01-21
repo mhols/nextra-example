@@ -108,7 +108,7 @@ class SettingsReference:
         False # if True use CENTRALPOSITIONS othterwise try matching
     )
 
-    LAMBDA_UNIT_OF_INPUT_FITSFILES=nu.ANGSTROM 
+    LAMBDA_UNIT_OF_THAR_ATLAS=nu.ANGSTROM 
     LAMBDA_UNIT_OF_OUTPUT=nu.NM              # nanometer 
 
     CENTRALPOSITION = {
@@ -208,7 +208,7 @@ class SettingsReference:
 
     ### add here any extra paramters your continuum method may need
     CONTINUUM_METHOD_EXTRA_KWARGS = dict (
-            CONTINUUM_POINTS_FILE = os.path.join(STARPARAMFILES, "vega/vega_narval_continuum.pickl"),
+            CONTINUUM_POINTS_FILE = os.path.join(STARPARAMFILES, "vega/vega_narval_continuum_A.pickl"),
             CONTINUUM_HALFVEL = 15 * nu.KM / nu.S
         )
     
