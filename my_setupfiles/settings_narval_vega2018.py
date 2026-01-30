@@ -201,6 +201,13 @@ class SettingsReference:
     )  # pixel interval around pixel mean for matching catalog
     VOIE_METHOD = "OPTIMAL_EXTRACT"##SUM_DIVIDE_CENTRALROW" ##OPTIMAL_EXTRACT"  # defines flux_123 in .fits
 
+    #------BEAM LIMITS PARAMS
+    MEDIAN_FILTER_LENGTH_BEAMS = 101
+    ORDER_LIMIT_THRESHOLD_LAB = -1 * nu.PERCENT  ## use largest index for which all below are bad (for left)
+    ORDER_LIMIT_THRESHOLD_GAG = 30 * nu.PERCENT  ## use smalles index such that all above are good (for left)
+
+    ## a negative ORDER_LIMIT_XXXXX  implies that this test is ignored
+
     #------- CONTINUUM PARAMS
 
     #CONTINUUM_METHOD_CLASS = continuum.QQQContinuum        ### set this if you want to use the same continuum estimator for all orders
