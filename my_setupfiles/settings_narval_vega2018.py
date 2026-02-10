@@ -81,8 +81,8 @@ class SettingsReference:
     LOWEXP = 15
     CUTORDER = 35  # means that cutting flats is between 34 and 35
     UNIQUE_EXP = True  # no distinction high / low is made
-    ABSORPTIONHALFW = 6  # central region beteween orders
-    JUMP = 2.0
+    ABSORPTIONHALFW = 5  # central region beteween orders
+    JUMP = 3
     comment["JUMP"] = "allowed jump for beam extraction"
     SMOOTHWIDTH_BEAM = 101
     comment["SMOOTHWIDTH_BEAM"] = "width of local polynomial fit"
