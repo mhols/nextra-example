@@ -26,7 +26,7 @@ load_dotenv()
 comment = {}  ## this comments will be included into the .fits document
 
 
-class SettingsReference:
+class SettingsNarval2018:
     SETTING_ID = "NARVAL basic setting"
     """
     The setting ID for logging
@@ -301,7 +301,7 @@ def get_kwargs():
     from nextra import settings_narval
     tmp = settings_narval.get_kwargs()
     tmp.update({
-        k: v for k, v in SettingsReference.__dict__.items() if not k.startswith("_")
+        k: v for k, v in SettingsNarval2018.__dict__.items() if not k.startswith("_")
     })
     return tmp
 
