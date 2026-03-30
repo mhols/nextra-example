@@ -88,7 +88,10 @@ class SettingsReference:
     VOIE2WIDTH = 11  # left (redwards) of separator
     VOIE3WIDTH = 13
     FLUX_LIMIT = 500  * ADU_FACTOR # below, the beam extraction is discarded
-
+    ORDER_LIMIT_THRESHOLD_LAB =  FLUX_LIMIT  ## use largest index for which all below are bad (for left)
+    ORDER_LIMIT_THRESHOLD_GAG =  FLUX_LIMIT  ## use smalles index such that all above are good (for left)
+    PERC_FLUX_MAX = 20 * nu.PERCENT
+ 
     SHIFT_MASK_VOIE1 = list(range(2, VOIE1WIDTH + 1)) #voie1 from 2 : VOIEWIDTH1
     SHIFT_MASK_VOIE2 = list(range(-VOIE2WIDTH -1, -1) #voie2 from -VOIE2WIDTH-1 : -2
     )  # realtive indices of extraction mask
