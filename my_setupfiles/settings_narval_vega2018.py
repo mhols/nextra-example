@@ -204,8 +204,10 @@ class SettingsNarval2018:
     #------BEAM LIMITS PARAMS
     MEDIAN_FILTER_LENGTH_BEAMS = 101
     ORDER_LIMIT_THRESHOLD_LAB =  FLUX_LIMIT  ## use largest index for which all below are bad (for left)
-    ORDER_LIMIT_THRESHOLD_GAG =  FLUX_LIMIT  ## use smalles index such that all above are good (for left)
-    PERC_FLUX_MAX = 20 * nu.PERCENT
+    ORDER_LIMIT_THRESHOLD_GAG =  -1 #FLUX_LIMIT  ## use smalles index such that all above are good (for left)
+    
+    PERC_FLUX_MAX_LAB = 20 * nu.PERCENT
+    PERC_FLUX_MAX_GAG = -1 #20 * nu.PERCENT
  
     ## a negative ORDER_LIMIT_XXXXX  implies that this test is ignored
 
