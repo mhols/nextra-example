@@ -78,6 +78,7 @@ class SettingsReference:
     HIGHEXP = 60
     LOWEXP = 15
     CUTORDER = 35  # means that cutting flats is between 34 and 35
+    BIG_PSEUDO_FLAT = True
     ABSORPTIONHALFW = 6  # central region beteween orders
     JUMP = 2.0
     comment["JUMP"] = "allowed jump for beam extraction"
