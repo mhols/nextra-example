@@ -300,6 +300,16 @@ class SettingsNarval2018:
     # ----------------------------------
     palette_order = "gist_rainbow"  # palette of orders
 
+    @classmethod
+    def get_kwargs(cls):
+        from nextra import settings_narval
+        tmp = settings_narval.get_kwargs()
+        tmp.update({
+        k: v for k, v in cls.__dict__.items() if not k.startswith("_")
+        })
+        return tmp
+
+
 
 def get_kwargs():
     from nextra import settings_narval
