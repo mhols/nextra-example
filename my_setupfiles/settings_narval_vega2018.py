@@ -4,6 +4,7 @@ from dotenv import load_dotenv
 
 import nextra.units as nu
 import nextra.continuum as continuum
+from nextra import settings_narval
 
 __doc__ = """ Global parameters for the datareduction pipeline.
 This specific module is adapted for the NEO Narval instrument.
@@ -26,7 +27,7 @@ load_dotenv()
 comment = {}  ## this comments will be included into the .fits document
 
 
-class SettingsNarval2018:
+class SettingsNarval2018(settings_narval.SettingsReference):
     SETTING_ID = "NARVAL basic setting"
     """
     The setting ID for logging
@@ -300,25 +301,9 @@ class SettingsNarval2018:
     # ----------------------------------
     palette_order = "gist_rainbow"  # palette of orders
 
-    @classmethod
-    def get_kwargs(cls):
-        from nextra import settings_narval
-        tmp = settings_narval.get_kwargs()
-        tmp.update({
-        k: v for k, v in cls.__dict__.items() if not k.startswith("_")
-        })
-        return tmp
-
-
 
 def get_kwargs():
-    from nextra import settings_narval
-    tmp = settings_narval.get_kwargs()
-    tmp.update({
-        k: v for k, v in SettingsNarval2018.__dict__.items() if not k.startswith("_")
-    })
-    return tmp
-
+    return SettingsNarval2018.get_kwargs()
 
 ## the following parameters are included into the fits files header
 PREFIX = "NEXTRA_"
