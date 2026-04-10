@@ -14,5 +14,5 @@ def get_kwargs():
     """
     a convenience shorcut
     """
-    return SettingsSirius.get_kwargs()   ### use your classname
+    return SettingsSirius().get_kwargs()   ### use your classname
  

@@ -303,7 +303,7 @@ class SettingsNarval2018(settings_narval.SettingsReference):
 
 
 def get_kwargs():
-    return SettingsNarval2018.get_kwargs()
+    return SettingsNarval2018().get_kwargs()
 
 ## the following parameters are included into the fits files header
 PREFIX = "NEXTRA_"
