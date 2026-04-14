@@ -9,6 +9,7 @@ class SettingsSirius(settings_narval_vega2018.SettingsNarval2018):
         'ALDEBARAN_QUATSCH': 'ALDEBARAN'   
     }
     FLUX_LIMIT = 250 * settings_narval_vega2018.SettingsNarval2018.ADU_FACTOR
+    CONTINUUM_METHOD_CLASS = settings_narval_vega2018.continuum.QQQContinuum
 
    
 def get_kwargs():
