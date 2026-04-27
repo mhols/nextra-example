@@ -27,7 +27,7 @@ load_dotenv()
 comment = {}  ## this comments will be included into the .fits document
 
 
-class SettingsNarval2018(settings_narval.SettingsReference):
+class SettingsNarvalSirius2011(settings_narval.SettingsReference):
     SETTING_ID = "NARVAL basic setting"
     """
     The setting ID for logging
@@ -305,8 +305,5 @@ class SettingsNarval2018(settings_narval.SettingsReference):
 
 
 def get_kwargs():
-    return SettingsNarval2018().get_kwargs()
+    return SettingsNarvalSirius2011().get_kwargs()
 
-## the following parameters are included into the fits files header
-PREFIX = "NEXTRA_"
-HEADER_ITEMS = [k for k in comment.keys() if k[:2] != "__"]

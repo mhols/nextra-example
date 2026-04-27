@@ -1,5 +1,7 @@
 import settings_narval_vega2018
 
+_PARENT_POS = settings_narval_vega2018.SettingsNarval2018.CENTRALPOSITION
+
 class SettingsSirius(settings_narval_vega2018.SettingsNarval2018):
 
 
@@ -10,6 +12,8 @@ class SettingsSirius(settings_narval_vega2018.SettingsNarval2018):
     }
     FLUX_LIMIT = 250 * settings_narval_vega2018.SettingsNarval2018.ADU_FACTOR
     CONTINUUM_METHOD_CLASS = settings_narval_vega2018.continuum.QQQContinuum
+
+    CENTRALPOSITION = {o: n + 9 for o, n in _PARENT_POS.items()}
 
    
 def get_kwargs():
