@@ -48,9 +48,9 @@ class SettingsNarval2018(settings_narval.SettingsReference):
     # uncomment if necessary
     # REFFILES = os.path.abspath(os.path.join(BASEDIR, "reffiles"))
     STARPARAMFILES = os.path.abspath(os.path.join(USER_BASEDIR, "star_params"))
-#    REFFITSFILE = os.path.abspath(
-#        os.path.join(REFFILES, "refthar/NEO_20220903_191404_th0.fits")
-#    )
+    #REFPICKLEFILE = os.path.abspath(
+    #    os.path.join(REFFILES, "refthar/NEO_20220903_191404_th0.fits")
+    #)
     
     # --------------------------------------------
     #    identifier for absolute sequence number and filenumber in sequence (1-4)
