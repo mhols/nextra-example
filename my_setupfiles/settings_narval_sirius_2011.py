@@ -33,6 +33,9 @@ class SettingsNarvalSirius2011(settings_narval.SettingsReference):
     """
     The setting ID for logging
     """
+    USER_BASEDIR = os.path.abspath(os.path.join(os.path.dirname(__file__), "../"))
+    STARPARAMFILES = os.path.abspath(os.path.join(USER_BASEDIR, "star_params"))
+
     CENTRALPOSITION = {
         o : n
         for o, n in [
@@ -89,8 +92,7 @@ class SettingsNarvalSirius2011(settings_narval.SettingsReference):
             CONTINUUM_POINTS_FILE = os.path.join(STARPARAMFILES, "vega/vega_narval_continuum_A.pickl"),
             CONTINUUM_HALFVEL = 15 * nu.KM / nu.S
         )
-    
-
+ 
     # ------ spectrograph paramter
 
 
