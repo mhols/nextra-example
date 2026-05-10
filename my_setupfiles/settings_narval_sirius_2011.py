@@ -36,7 +36,7 @@ class SettingsNarvalSirius2011(settings_narval.SettingsReference):
     IS_REFERENCE = False
     USER_BASEDIR = os.path.abspath(os.path.join(os.path.dirname(__file__), "../"))
     STARPARAMFILES = os.path.abspath(os.path.join(USER_BASEDIR, "star_params"))
-    
+
     CENTRALPOSITION = {
         o : n
         for o, n in [
