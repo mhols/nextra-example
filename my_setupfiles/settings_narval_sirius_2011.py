@@ -85,7 +85,6 @@ class SettingsNarvalSirius2011(settings_narval.SettingsReference):
 
     ORDERS = list(range(60, 30, -1))     # enumeration from low to high freqs
 
-    #CONTINUUM_METHOD_CLASS = continuum.QQQContinuum        ### set this if you want to use the same continuum estimator for all orders
     CONTINUUM_METHOD_CLASS = continuum.PointBasedContinuum  ### set this if you want to use the same continuum estimator for all orders
 
     ### add here any extra paramters your continuum method may need
