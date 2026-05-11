@@ -29,7 +29,7 @@ comment = {}  ## this comments will be included into the .fits document
 
 
 class SettingsNarvalSirius2011(settings_narval.SettingsReference):
-    SETTING_ID = "NARVAL basic setting"
+    SETTING_ID = "NARVAL Sirius setting"
     """
     The setting ID for logging
     """
