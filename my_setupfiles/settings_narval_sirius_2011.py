@@ -46,7 +46,7 @@ class SettingsNarvalSirius2011(settings_narval.SettingsReference):
             #[27, 244],
             #[28, 276],
             #[29, 309],
-            #[30, 342],
+            [30, 342],
             [31, 376],
             [32, 411],
             [33, 447],
@@ -83,7 +83,7 @@ class SettingsNarvalSirius2011(settings_narval.SettingsReference):
     
     CENTRALPOSITION = {o: n + 9 for o, n in CENTRALPOSITION.items()}
 
-    ORDERS = list(range(60, 30, -1))     # enumeration from low to high freqs
+    ORDERS = list(range(60, 29, -1))     # enumeration from low to high freqs
 
     CONTINUUM_METHOD_CLASS = continuum.PointBasedContinuum  ### set this if you want to use the same continuum estimator for all orders
 
