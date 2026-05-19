@@ -85,6 +85,14 @@ class SettingsNarvalSirius2011(settings_narval.SettingsReference):
 
     ORDERS = list(range(60, 29, -1))     # enumeration from low to high freqs
 
+
+
+    ORDER_LIMIT_THRESHOLD_LAB=-1
+    ORDER_LIMIT_THRESHOLD_GAG=-1
+    PERC_FLUX_MAX_LAB=-1
+    PERC_FLUX_MAX_GAG=-1
+    
+
     CONTINUUM_METHOD_CLASS = continuum.PointBasedContinuum  ### set this if you want to use the same continuum estimator for all orders
 
     ### add here any extra paramters your continuum method may need
