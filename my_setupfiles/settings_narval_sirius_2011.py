@@ -90,7 +90,7 @@ class SettingsNarvalSirius2011(settings_narval.SettingsReference):
     ORDER_LIMIT_THRESHOLD_LAB=-1
     ORDER_LIMIT_THRESHOLD_GAG=-1
     PERC_FLUX_MAX_LAB=-1
-    PERC_FLUX_MAX_GAG=-1
+    PERC_FLUX_MAX_GAG=5 * nu.PERCENT #explores from the inside  #-1 
     
 
     CONTINUUM_METHOD_CLASS = continuum.PointBasedContinuum  ### set this if you want to use the same continuum estimator for all orders
