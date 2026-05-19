@@ -36,6 +36,12 @@ class SettingsNarvalSirius2011(settings_narval.SettingsReference):
     IS_REFERENCE = False
     USER_BASEDIR = os.path.abspath(os.path.join(os.path.dirname(__file__), "../"))
     STARPARAMFILES = os.path.abspath(os.path.join(USER_BASEDIR, "star_params"))
+    
+    ### add or owerwrite your properties here
+    STARNAME_MAP_FOR_BERV = {
+        'SIRIUSA': 'SIRIUS',
+        'ALDEBARAN_QUATSCH': 'ALDEBARAN'
+    }
 
     CENTRALPOSITION = {
         o : n
@@ -76,14 +82,14 @@ class SettingsNarvalSirius2011(settings_narval.SettingsReference):
             [57, 1709],
             [58, 1785],
             [59, 1863],
-            [60, 1945],
+            #[60, 1945],
             #[61, 2031],
         ]
     }
     
     CENTRALPOSITION = {o: n + 9 for o, n in CENTRALPOSITION.items()}
 
-    ORDERS = list(range(60, 29, -1))     # enumeration from low to high freqs
+    ORDERS = list(range(59, 29, -1))     # enumeration from low to high freqs
 
 
 
