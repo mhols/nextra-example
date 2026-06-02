@@ -99,12 +99,12 @@ class SettingsNarvalSirius2011(settings_narval.SettingsReference):
     PERC_FLUX_MAX_GAG=5 * nu.PERCENT #explores from the inside  #-1 
     
 
-    CONTINUUM_METHOD_CLASS = continuum.PointBasedContinuum  ### set this if you want to use the same continuum estimator for all orders
+    CONTINUUM_METHOD_CLASS = continuum.SigmaClippingContinuum
 
     ### add here any extra paramters your continuum method may need
     CONTINUUM_METHOD_EXTRA_KWARGS = dict (
-            CONTINUUM_POINTS_FILE = os.path.join(STARPARAMFILES, "vega/vega_narval_continuum_A.pickl"),
-            CONTINUUM_HALFVEL = 15 * nu.KM / nu.S
+            WINDOW_WIDTH = 140,
+            SIGMA = 2
         )
  
     # ------ spectrograph paramter
