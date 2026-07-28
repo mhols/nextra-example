@@ -103,7 +103,7 @@ class SettingsNarvalSirius2011(settings_narval.SettingsReference):
 
     ### add here any extra paramters your continuum method may need
     CONTINUUM_METHOD_EXTRA_KWARGS = dict (
-            WINDOW_WIDTH = 140,
+            WINDOW_WIDTH = 150,
             SIGMA = 2
         )
  
