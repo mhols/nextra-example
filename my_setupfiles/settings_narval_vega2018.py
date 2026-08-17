@@ -4,6 +4,7 @@ from dotenv import load_dotenv
 
 import nextra.units as nu
 import nextra.continuum as continuum
+from nextra import settings_narval
 
 __doc__ = """ Global parameters for the datareduction pipeline.
 This specific module is adapted for the NEO Narval instrument.
@@ -26,7 +27,7 @@ load_dotenv()
 comment = {}  ## this comments will be included into the .fits document
 
 
-class SettingsReference:
+class SettingsNarval2018(settings_narval.SettingsReference):
     SETTING_ID = "NARVAL basic setting"
     """
     The setting ID for logging
@@ -47,9 +48,9 @@ class SettingsReference:
     # uncomment if necessary
     # REFFILES = os.path.abspath(os.path.join(BASEDIR, "reffiles"))
     STARPARAMFILES = os.path.abspath(os.path.join(USER_BASEDIR, "star_params"))
-#    REFFITSFILE = os.path.abspath(
-#        os.path.join(REFFILES, "refthar/NEO_20220903_191404_th0.fits")
-#    )
+    #REFPICKLEFILE = os.path.abspath(
+    #    os.path.join(REFFILES, "refthar/NEO_20220903_191404_th0.fits")
+    #)
     
     # --------------------------------------------
     #    identifier for absolute sequence number and filenumber in sequence (1-4)
@@ -80,6 +81,7 @@ class SettingsReference:
     HIGHEXP = 60
     LOWEXP = 15
     CUTORDER = 35  # means that cutting flats is between 34 and 35
+    BIG_PSEUDO_FLAT = True
     UNIQUE_EXP = True  # no distinction high / low is made
     ABSORPTIONHALFW = 5  # central region beteween orders
     JUMP = 3
@@ -203,9 +205,12 @@ class SettingsReference:
 
     #------BEAM LIMITS PARAMS
     MEDIAN_FILTER_LENGTH_BEAMS = 101
-    ORDER_LIMIT_THRESHOLD_LAB =  5 * nu.PERCENT  ## use largest index for which all below are bad (for left)
-    ORDER_LIMIT_THRESHOLD_GAG = 30 * nu.PERCENT  ## use smalles index such that all above are good (for left)
-
+    ORDER_LIMIT_THRESHOLD_LAB =  FLUX_LIMIT  ## use largest index for which all below are bad (for left)
+    ORDER_LIMIT_THRESHOLD_GAG =  -1 #FLUX_LIMIT  ## use smalles index such that all above are good (for left)
+    
+    PERC_FLUX_MAX_LAB = 20 * nu.PERCENT
+    PERC_FLUX_MAX_GAG = -1 #20 * nu.PERCENT
+ 
     ## a negative ORDER_LIMIT_XXXXX  implies that this test is ignored
 
     #------- CONTINUUM PARAMS
@@ -298,13 +303,7 @@ class SettingsReference:
 
 
 def get_kwargs():
-    from nextra import settings_narval
-    tmp = settings_narval.get_kwargs()
-    tmp.update({
-        k: v for k, v in SettingsReference.__dict__.items() if not k.startswith("_")
-    })
-    return tmp
-
+    return SettingsNarval2018().get_kwargs()
 
 ## the following parameters are included into the fits files header
 PREFIX = "NEXTRA_"

@@ -1,7 +1,7 @@
 import os
 import numpy as np
 from dotenv import load_dotenv
-
+import nextra.night as night
 import nextra.units as nu
 
 __doc__ = """ Global parameters for the datareduction pipeline.
@@ -25,7 +25,8 @@ load_dotenv()
 comment = {}  ## this comments will be included into the .fits document
 
 
-class SettingsReference:
+class SettingsNeonarval:
+
     SETTING_ID = "neonarval_reference"
     """
     The setting ID for logging
@@ -43,11 +44,11 @@ class SettingsReference:
 
 
     BASEDIR = os.path.abspath(os.path.join(os.path.dirname(__file__), "../../"))
-    REFFILES = os.path.abspath(os.path.join(BASEDIR, "assets/reffiles"))
-    STARPARAMFILES = os.path.abspath(os.path.join(BASEDIR, "assets/star_params"))
-    REFFITSFILE = os.path.abspath(
-        os.path.join(REFFILES, "refthar/NEO_20220903_191404_th0.fits")
-    )
+    REFFILES = os.path.abspath(os.path.join(BASEDIR, "nextra/assets/reffiles"))
+    STARPARAMFILES = os.path.abspath(os.path.join(BASEDIR, "nextra/assets/star_params"))
+    NIGHT_CLASS = night.GeneralNight
+    IS_REFERENCE = False  ## shall not be used to generate a refpickle instead it uses the REFPICKLE below
+    REFPICKLE = os.path.abspath(os.path.join(REFFILES, "reference_neo_narval.pickle"))
     
     # --------------------------------------------
     #    identifier for absolute sequence number and filenumber in sequence (1-4)
@@ -326,7 +327,7 @@ class SettingsReference:
 
 def get_kwargs():
     return {
-        k: v for k, v in SettingsReference.__dict__.items() if not k.startswith("_")
+        k: v for k, v in SettingsNeonarval.__dict__.items() if not k.startswith("_")
     }
 
 
