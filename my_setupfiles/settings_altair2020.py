@@ -44,8 +44,9 @@ class SettingsReference:
 
 
     USER_BASEDIR = os.path.abspath(os.path.join(os.path.dirname(__file__), "../"))
-    # uncomment if necessary
-    # REFFILES = os.path.abspath(os.path.join(BASEDIR, "reffiles"))
+    BASEDIR = os.path.abspath(os.path.join(os.path.dirname(__file__), "../../"))
+    REFFILES = os.path.abspath(os.path.join(BASEDIR, "assets/reffiles"))
+    
     STARPARAMFILES = os.path.abspath(os.path.join(USER_BASEDIR, "star_params"))
 #    REFFITSFILE = os.path.abspath(
 #        os.path.join(REFFILES, "refthar/NEO_20220903_191404_th0.fits")
