@@ -15,6 +15,8 @@ comment = {}  ## this comments will be included into the .fits document
 class SettingsSiriusEspadons(nx.settings_espadons.SettingsReferenceEspadons):
     IS_REFERENCE = False
     VOIE_METHOD = "OPTIMAL_EXTRACT"
+    BIG_PSEUDO_FLAT = False
+
 
 
 

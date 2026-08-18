@@ -179,8 +179,8 @@ class SettingsNarval2018(settings_narval.SettingsReference):
     #  atlas lines available
     # -------------------------------------------
     #REF_ATLASLINES_REEDMAN = os.path.join(REFFILES, "Redman_table6.dat")
-    #REF_ATLASLINES_UVES = os.path.join(REFFILES, "thar_UVES_MM090311.dat")
-    #REF_ATLASLINES_CLICKED = os.path.join(REFFILES, "thar_clicked_uves.csv")
+    REF_ATLASLINES_UVES = os.path.join(REFFILES, "thar_UVES_MM090311.dat")
+    REF_ATLASLINES_CLICKED = os.path.join(REFFILES, "thar_clicked_uves.csv")
 
     # choice of catalog to use
     # TODO: use enum type
