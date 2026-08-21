@@ -14,7 +14,7 @@ comment = {}  ## this comments will be included into the .fits document
 
 class SettingsSiriusEspadons(nx.settings_espadons.SettingsReferenceEspadons):
     IS_REFERENCE = False
-    VOIE_METHOD = "SUM_DIVIDE_CENTRALROW"
+    VOIE_METHOD = "OPTIMAL_EXTRACT" #SUM_DIVIDE_CENTRALROW"
     BIG_PSEUDO_FLAT = False
 
 
