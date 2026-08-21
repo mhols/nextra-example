@@ -14,12 +14,12 @@ comment = {}  ## this comments will be included into the .fits document
 
 class SettingsSiriusEspadons(nx.settings_espadons.SettingsReferenceEspadons):
     IS_REFERENCE = False
-    VOIE_METHOD = "SUM_DIVIDE_CENTRALROW"
+    VOIE_METHOD = "OPTIMAL_EXTRACT" #"SUM_DIVIDE_CENTRALROW"
     BIG_PSEUDO_FLAT = False
 
 
 
-
+    ORDERS = list(range(24, 57))
 
 def get_kwargs():
     tmp = nx.settings_espadons.get_kwargs()
