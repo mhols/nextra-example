@@ -12,19 +12,19 @@ import nextra.continuum as continuum
 comment = {}  ## this comments will be included into the .fits document
 
 
-class SettingsSiriusEspadons(nx.settings_espadons.SettingsReferenceEspadons):
+class SettingsAltairNeoNarval(nx.settings_neonarval.SettingsReferenceNeoNarval):
     IS_REFERENCE = False
     VOIE_METHOD = "OPTIMAL_EXTRACT" #SUM_DIVIDE_CENTRALROW"
     BIG_PSEUDO_FLAT = False
+    CENTRALPOSITION={o:n+25 for o,n in nx.settings_neonarval.SettingsReferenceNeoNarval.CENTRALPOSITION.items()}
 
 
 
-    ORDERS = list(range(24, 57))
 
 def get_kwargs():
-    tmp = nx.settings_espadons.get_kwargs()
+    tmp = nx.settings_neonarval.get_kwargs()
     tmp.update({
-        k: v for k, v in SettingsSiriusEspadons.__dict__.items() if not k.startswith("_")
+        k: v for k, v in SettingsAltairNeoNarval.__dict__.items() if not k.startswith("_")
     })
     return tmp
 
