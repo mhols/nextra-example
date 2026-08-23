@@ -16,6 +16,12 @@ class SettingsAltairNeoNarval(nx.settings_neonarval.SettingsReferenceNeoNarval):
     IS_REFERENCE = False
     VOIE_METHOD = "OPTIMAL_EXTRACT" #SUM_DIVIDE_CENTRALROW"
     BIG_PSEUDO_FLAT = False
+
+    USEFUL_IMAGE = [[(100,4208, 100, 4196)]]
+    NROWS = 4108
+    NCOLS = 4096
+
+    
     CENTRALPOSITION={o:n+25 for o,n in nx.settings_neonarval.SettingsReferenceNeoNarval.CENTRALPOSITION.items()}
 
 
