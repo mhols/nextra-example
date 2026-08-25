@@ -45,6 +45,16 @@ class SettingsNeoNarvalVega2023(SettingsReferenceNeoNarval):
 
     print(USER_BASEDIR)
 
+    SHIFT_MASK_VOIE1 = list(range(2, 14)) #voie1 from 2 : VOIEWIDTH1
+    SHIFT_MASK_VOIE2 = list(range(-11 -1, -1)) #voie2 from -VOIE2WIDTH-1 : -2
+
+    FLUX_LIMIT = 500  * SettingsReferenceNeoNarval.ADU_FACTOR # below, the beam extraction is discarded
+    ORDER_LIMIT_THRESHOLD_LAB =  FLUX_LIMIT  ## use largest index for which all below are bad (for left)
+    ORDER_LIMIT_THRESHOLD_GAG =  -1 #FLUX_LIMIT  ## use smalles index such that all above are good (for left)
+    PERC_FLUX_MAX_LAB = 20 * nu.PERCENT
+    PERC_FLUX_MAX_GAG = -1 #20 * nu.PERCENT
+
+
     # uncomment if necessary
     STARPARAMFILES = os.path.abspath(os.path.join(USER_BASEDIR, "star_params/"))
     print(STARPARAMFILES)

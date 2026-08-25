@@ -17,9 +17,10 @@ class SettingsSiriusEspadons(nx.settings_espadons.SettingsReferenceEspadons):
     VOIE_METHOD = "OPTIMAL_EXTRACT" #SUM_DIVIDE_CENTRALROW"
     BIG_PSEUDO_FLAT = False
 
-
-
     ORDERS = list(range(24, 57))
+
+    CONTINUUM_METHOD_CLASS = continuum.SigmaClippingContinuum
+    
 
 def get_kwargs():
     tmp = nx.settings_espadons.get_kwargs()
