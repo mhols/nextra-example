@@ -27,7 +27,7 @@ load_dotenv()
 comment = {}  ## this comments will be included into the .fits document
 
 
-class SettingsNarval2018(settings_narval.SettingsReference):
+class SettingsNarval2018(settings_narval.SettingsReferenceNarval):
     SETTING_ID = "NARVAL basic setting"
     """
     The setting ID for logging

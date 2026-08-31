@@ -43,8 +43,6 @@ class SettingsNeoNarvalVega2023(SettingsReferenceNeoNarval):
 
     USER_BASEDIR = os.path.abspath(os.path.join(os.path.dirname(__file__), "../"))
 
-    print(USER_BASEDIR)
-
     SHIFT_MASK_VOIE1 = list(range(2, 14)) #voie1 from 2 : VOIEWIDTH1
     SHIFT_MASK_VOIE2 = list(range(-11 -1, -1)) #voie2 from -VOIE2WIDTH-1 : -2
 
@@ -57,7 +55,6 @@ class SettingsNeoNarvalVega2023(SettingsReferenceNeoNarval):
 
     # uncomment if necessary
     STARPARAMFILES = os.path.abspath(os.path.join(USER_BASEDIR, "star_params/"))
-    print(STARPARAMFILES)
     
     # CONTINUUM_METHOD_CLASS = continuum.PointBasedContinuum
     CONTINUUM_METHOD_CLASS = continuum.SigmaClippingContinuum

@@ -1,21 +1,24 @@
-# nextra-example
+go into the NEXTRApol_example directory
+	cd path_to/NEXTRApol_example
 
-# pip install nextra
-download nextra
+create virtual environment within NEXTRApol_example
+	python3 -m venv venv_nextrapol
+	source venv_nextrapol/bin/activate
 
-create virtual environment within nextra-example
-	python3 -m venv venv
-	source venv/bin/activate
+update pip
+	pip install --upgrade pip
 
-pip install -r nextra/requirements.txt (path to requirements.txt)
+install the required python packages
+	pip install -r requirements.txt
 
-(export PYTHONPATH=/Users/boehm/Desktop/nextragit/nextra/src:/Users/boehm/Desktop/nextragit/nextra-example/my_setupfiles/)
-export PYTHONPATH=../nextra/src
+install the nextrapol package. It is located in the directory named NEXTRApol
+	pip install -e ../NEXTRApol     ## if necessary change path to the nextrapol package top level directory (above src)
 
-create directory my_setupfiles 
+finalise the installation by issuing the shell command 
+	intialize
 
--> outside source control propose: assets/reffiles/refthar/*.fits
-
+You can now use nextra in your python scipts as 
+	import nextrapol as nx
 
 
 
