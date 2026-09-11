@@ -16,7 +16,7 @@ class SettingsSiriusEspadons(nx.settings_espadons.SettingsReferenceEspadons):
 
     ORDERS = list(range(24, 57))
 
-    CONTINUUM_METHOD_CLASS = continuum.SigmaClippingContinuum
+    CONTINUUM_METHOD_CLASS = continuum.GlobalMaskedContinuum
     
 
 def get_kwargs():
